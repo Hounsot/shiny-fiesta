@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/shiny-fiesta/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/shiny-fiesta/assets/index-CWKFDjjX.js"></script>
+    <link rel="stylesheet" crossorigin href="/shiny-fiesta/assets/index-BgMQMHZN.css">
+  </head>
+  <body class="bg-black font-mts-compact">
+    <div
+      class="flex rounded-[32px] overflow-hidden flex-col justify-between bg-[image:var(--game-bg)] max-w-[360px] w-full max-h-[800px] h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    >
+      <div
+        class="mix-blend-overlay opacity-50 overflow-hidden flex justify-center items-center fixed z-[1] w-full h-full"
+      >
+        <img
+          id="small-rays"
+          class="absolute min-h-[200vh] min-w-[200vh] w-auto object-cover translate-y-[-2%]"
+          src="data:image/svg+xml,%3csvg%20width='5074'%20height='5074'%20viewBox='0%200%205074%205074'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3691.7%204798.64L2536.58%202536.64L405.165%203918.01L274.504%203691.7L2536.58%202536.57L3918.01%204667.98L3691.7%204798.64ZM2536.58%202536.57L120.249%203319.29L52.6134%203066.87L2536.58%202536.57ZM2536.58%202536.57L0%202667.23L0.000148694%202405.91L2536.58%202536.57ZM2536.58%202536.57L52.6141%202006.27L120.249%201753.85L2536.58%202536.57ZM2536.58%202536.57L274.507%201381.44L405.169%201155.13L2536.58%202536.57ZM2536.58%202536.57L650.555%20835.334L835.338%20650.551L2536.58%202536.57ZM2536.57%202536.39L1381.44%20274.504L1155.13%20405.166L2536.58%202536.57L4237.8%204422.59L4422.58%204237.81L2536.58%202536.57L4667.97%203918.01L4798.63%203691.7L2536.58%202536.57L4952.89%203319.29L5020.52%203066.88L2536.58%202536.57L5073.14%202667.23V2405.91L2536.58%202536.57L5020.53%202006.27L4952.89%201753.85L2536.58%202536.57L4798.64%201381.44L4667.97%201155.13L2536.74%202536.43L4422.59%20835.339L4237.81%20650.555L2536.74%202536.43L3918.01%20405.17L3691.7%20274.509L2536.74%202536.43L2536.66%202536.48L2536.59%202536.52L3319.3%20120.251L3066.88%2052.6155L2536.57%202536.44L2536.57%202536.39ZM2536.57%202536.39L1753.85%20120.249L2006.27%2052.614L2536.57%202536.39ZM2536.57%202536.39L2405.91%200.000607449L2667.24%200L2536.57%202536.39ZM2536.58%202536.64L1753.85%204952.89L2006.27%205020.53L2536.58%202536.64ZM2536.58%202536.64L3319.29%204952.89L3066.87%205020.53L2536.58%202536.64ZM2536.58%202536.64L2405.91%205073.14H2667.23L2536.58%202536.64ZM2536.58%202536.64L1381.44%204798.64L1155.13%204667.98L2536.58%202536.64ZM2536.58%202536.64L835.334%204422.59L650.55%204237.81L2536.58%202536.64Z'%20fill='white'/%3e%3c/svg%3e"
+          alt=""
+        />
+        <img
+          id="big-rays"
+          class="absolute min-h-[200vh] min-w-[200vh] w-auto object-cover translate-y-[-2%] opacity-0"
+          src="data:image/svg+xml,%3csvg%20width='6552'%20height='6552'%20viewBox='0%200%206552%206552'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5115.18%20482.22L3276%203276L3951%200L2601%200.000690534L3276%203276L1436.81%20482.22L482.221%201436.81L3276%203276L0.000690534%202601L0%203951L3276%203276L482.221%205115.18L1436.81%206069.78L3276%203276L2601%206552L3951%206552L3276%203276L5115.18%206069.78L6069.78%205115.18L3276%203276L6552%203951L6552%202601L3276%203276L6069.78%201436.81L5115.18%20482.22Z'%20fill='white'/%3e%3c/svg%3e"
+          alt=""
+        />
+        <img class="absolute top-0 left-0 w-full h-full" src="/shiny-fiesta/assets/Mask-3RQYhn2S.png" alt="" />
+      </div>
+      <img class="absolute top-0 left-0 w-full h-[44px] z-[10]" src="data:image/png;base64,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" alt="" />
+      <img class="absolute bottom-0 left-0 w-full h-[34px] z-[10]" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAABECAYAAADeBbBrAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAG1SURBVHgB7dyxTV0xFAbg36FJldwkbSJdJRmAEcgG2SBhEsQGbMBjk0dHyQAgXfR6eNCjixG0cBsam++TjuwN/Ns+dgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwFsoAboxjr/37jMf1OlurSEAybrWyWa6XAVo2k6ALnwffx7MyapOx1ofA/BkrPV3GL7kdntzGqBZTtyhAz/GX//rcByAV+yk/Jmmi3WAJn0I0IN/AVjw3EoHNEpwhz7sBWDZboBmCe7QgZJsA7DMo3VomOAOHZiT8wAsKusAzRLcoQNzymEAFs0nAZrlO0jowN32evo0fCtFrzvwglI3+Jvp8ihAswR36EQN7+vPw9erujw/9rCOAd69p/cv5azeyu1vpotVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4xQMh7DDr7DiF3AAAAABJRU5ErkJggg==" alt="" />
+      <nav data-js="nav" class="z-[2] flex justify-between px-[20px] py-[12px] pt-[56px]" style="transition: opacity 0.3s ease-in-out">
+        <div class="flex flex-col gap-[8px]">
+          <div class="flex items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-[12px] bg-gray-100">
+            <img class="max-h-[36px]" src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_40003865_5306)'%3e%3cpath%20d='M15%205.01246C15%204.11226%2013.9234%203.66144%2013.2938%204.29798L10.1984%207.4273C8.06612%209.58289%207%2010.6607%207%2012C7%2013.3393%208.06612%2014.4171%2010.1984%2016.5727L13.2938%2019.702C13.9234%2020.3386%2015%2019.8877%2015%2018.9875C15%2018.7196%2014.8947%2018.4625%2014.7073%2018.2731L11.6118%2015.1437C10.5058%2014.0255%209.82141%2013.3276%209.38882%2012.7544C8.99838%2012.2371%208.99883%2012.0565%208.99897%2012.0028L8.99897%2012L8.99897%2011.9973C8.99883%2011.9435%208.99838%2011.7629%209.38882%2011.2456C9.8214%2010.6724%2010.5058%209.97446%2011.6118%208.85627L14.7073%205.72695C14.8947%205.53745%2015%205.28044%2015%205.01246Z'%20fill='%231D2023'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_40003865_5306'%3e%3crect%20width='24'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" />
+          </div>
+          <div data-js="recent-wins" class="pointer-events-none user-select-none w-fit h-fit">
+            <div class="absolute blur40 flex gap-[12px] w-fit p-[8px] pr-[12px] bg-[var(--wins-bg)] rounded-[20px]">
+              <img class="bg-white rounded-[10px] p-[1px] max-h-[36px]" src="/shiny-fiesta/assets/iphone-CSQLc799.png" alt="" />
+              <div class="flex flex-col">
+                <span class="text-[14px] text-white pointer-events-none select-none leading-[18px]">Татьяная М.</span>
+                <span class="text-[12px] text-white pointer-events-none select-none leading-[18px]">
+                  IPhone 15 Pro Max
+                </span>
+              </div>
+            </div>
+            <div class="absolute blur40 flex gap-[12px] w-fit p-[8px] pr-[12px] bg-[var(--wins-bg)] rounded-[20px]">
+              <img class="bg-white rounded-[10px] p-[1px] max-h-[36px]" src="/shiny-fiesta/assets/star5-nwxiX5Pg.png" alt="" />
+              <div class="flex flex-col">
+                <span class="text-[14px] text-white pointer-events-none select-none leading-[18px]">Матвей В.</span>
+                <span class="text-[12px] text-white pointer-events-none select-none leading-[18px]">5 звезд</span>
+              </div>
+            </div>
+            <div class="absolute blur40 flex gap-[12px] w-fit p-[8px] pr-[12px] bg-[var(--wins-bg)] rounded-[20px]">
+              <img class="bg-white rounded-[10px] p-[1px] max-h-[36px]" src="/shiny-fiesta/assets/1000-DDUOt6Em.png" alt="" />
+              <div class="flex flex-col">
+                <span class="text-[14px] text-white pointer-events-none select-none leading-[18px]">Иван К.</span>
+                <span class="text-[12px] text-white pointer-events-none select-none leading-[18px]">1000 баллов</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-end gap-[8px]">
+          <div
+            data-js="balance-cashback"
+            class="flex gap-[4px] items-center w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[image:var(--premium-gradient)] text-white rounded-[16px]"
+          >
+            <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_40003865_5312)'%3e%3cpath%20d='M17.2016%203.5H11.1331C10.3908%203.50054%209.67897%203.79453%209.15422%204.31736C8.62947%204.84018%208.3347%205.54906%208.3347%206.28817V9.30699H5.41735C4.64362%209.30699%203.90158%209.613%203.35447%2010.1577C2.80736%2010.7024%202.5%2011.4412%202.5%2012.2115C2.5%2012.9818%202.80736%2013.7206%203.35447%2014.2653C3.90158%2014.81%204.64362%2015.116%205.41735%2015.116H8.3347V18.0185C8.32437%2018.4063%208.39217%2018.7922%208.53408%2019.1534C8.676%2019.5147%208.88916%2019.844%209.16098%2020.1219C9.43281%2020.3998%209.7578%2020.6207%2010.1168%2020.7715C10.4757%2020.9223%2010.8614%2021%2011.251%2021C11.6406%2021%2012.0263%2020.9223%2012.3853%2020.7715C12.7443%2020.6207%2013.0692%2020.3998%2013.3411%2020.1219C13.6129%2019.844%2013.8261%2019.5147%2013.968%2019.1534C14.1099%2018.7922%2014.1777%2018.4063%2014.1674%2018.0185V15.116H17.2016C17.9439%2015.1155%2018.6557%2014.8215%2019.1805%2014.2987C19.7052%2013.7758%2020%2013.067%2020%2012.3278V6.28817C20%205.54906%2019.7052%204.84018%2019.1805%204.31736C18.6557%203.79453%2017.9439%203.50054%2017.2016%203.5Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_40003865_5312'%3e%3crect%20width='24'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" />
+            <span data-js="balance-cashback-value">3250</span>
+          </div>
+          <a
+            data-js="balance-stars"
+            class="flex gap-[4px] items-center blur40 w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[var(--wins-bg)] text-white rounded-[16px]"
+            href="/giveaways.html"
+          >
+            <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_40003865_5318)'%3e%3cpath%20d='M11.762%2018.1357L12%2017.9629L12.238%2018.1357C15.0871%2020.2046%2016.5117%2021.239%2017.462%2020.9532C17.869%2020.8308%2018.2264%2020.5821%2018.4826%2020.2431C19.0806%2019.4516%2018.6044%2017.7572%2017.652%2014.3686L17.7512%2014.288C20.6943%2011.8958%2022.1659%2010.6997%2021.9851%209.56131C21.9516%209.35022%2021.8845%209.14586%2021.7862%208.95601C21.2565%207.9322%2019.3619%207.84107%2015.5727%207.6588C14.1382%203.97573%2013.421%202.13419%2012.2026%202.01028C12.0679%201.99657%2011.9321%201.99657%2011.7974%202.01028C10.579%202.13419%209.8618%203.97573%208.42731%207.6588C4.63811%207.84107%202.74352%207.9322%202.21378%208.95601C2.11554%209.14586%202.04839%209.35022%202.01486%209.56131C1.83408%2010.6997%203.30567%2011.8958%206.24884%2014.288L6.34801%2014.3686C5.39561%2017.7572%204.91941%2019.4516%205.51744%2020.2431C5.77356%2020.5821%206.13101%2020.8308%206.53801%2020.9532C7.48833%2021.239%208.9129%2020.2046%2011.762%2018.1357Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_40003865_5318'%3e%3crect%20width='24'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" />
+            <span data-js="balance-stars-value">0</span>
+          </a>
+        </div>
+      </nav>
+      <div
+        data-js="game-container"
+        class="absolute top-[30%] left-1/2 transform -translate-x-1/2 w-full z-[2] flex flex-col items-center gap-[8px]"
+      >
+        <img
+          data-js="pointer"
+          class="absolute disappear top-[-10%] left-1/2 transform -translate-x-1/2"
+          style="transition: opacity 0.3s ease-in-out"
+          src="data:image/svg+xml,%3csvg%20width='19'%20height='17'%20viewBox='0%200%2019%2017'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M17.807%203L10.7711%2015.1865C10.0013%2016.5199%208.07681%2016.5199%207.30701%2015.1865L0.271112%203C-0.498688%201.66667%200.463564%200%202.00316%200H9.03906H16.075C17.6146%200%2018.5768%201.66667%2017.807%203Z'%20fill='white'/%3e%3c/svg%3e"
+          alt=""
+        />
+        <div data-js="carousel" class="relative w-full h-[230px] overflow-hidden"></div>
+        <p
+          data-js="prize-description"
+          class="absolute h4-text text-[20px] text-center text-white top-[90%] w-[306px] disappear"
+          style="transition: opacity 0.3s ease-in-out"
+        ></p>
+        <div
+          data-js="badge-prizes"
+          class="flex gap-[] blur40 cursor-pointer w-fit h-fit py-[6px] px-[12px] bg-[var(--wins-bg)] c2-bold-wide border-[var(--stroke)] border-[1px] text-white rounded-[16px]"
+        >
+          Призы
+        </div>
+      </div>
+      <div
+        data-js="gama-controls"
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-[100] flex w-full flex-col gap-[12px] px-[20px] items-center pb-[32px]"
+      >
+        <div class="flex w-fit h-fit gap-[8px]">
+          <div
+            data-js="price-btn"
+            data-price="50"
+            class="price-btn active cursor-pointer select-none flex blur40 items-center justify-center text-white font-medium text-[17px] leading-[20px] w-[83px] h-[44px] p-[12px] bg-[var(--wins-bg)] rounded-[16px] border-[var(--stroke)] border-[1px] transition-colors duration-300"
+          >
+            50
+          </div>
+          <div
+            data-js="price-btn"
+            data-price="100"
+            class="price-btn cursor-pointer select-none flex blur40 items-center justify-center text-white font-medium text-[17px] leading-[20px] w-[83px] h-[44px] p-[12px] bg-[var(--wins-bg)] rounded-[16px] border-[var(--stroke)] border-[1px] transition-colors duration-300"
+          >
+            100
+          </div>
+          <div
+            data-js="price-btn"
+            data-price="500"
+            class="price-btn cursor-pointer select-none flex blur40 items-center justify-center text-white font-medium text-[17px] leading-[20px] w-[83px] h-[44px] p-[12px] bg-[var(--wins-bg)] rounded-[16px] border-[var(--stroke)] border-[1px] transition-colors duration-300"
+          >
+            500
+          </div>
+        </div>
+        <div
+          data-js="gama-controls-button"
+          class="flex cursor-pointer shadow-(--accent-shadow) items-center justify-center w-full h-fit font-bold p-[14px] bg-white rounded-[16px] uppercase text-black text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span>Крутить за</span>
+            <span data-js="gama-controls-button-price">50</span>
+          </div>
+          <img class="invert" src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_40003865_5312)'%3e%3cpath%20d='M17.2016%203.5H11.1331C10.3908%203.50054%209.67897%203.79453%209.15422%204.31736C8.62947%204.84018%208.3347%205.54906%208.3347%206.28817V9.30699H5.41735C4.64362%209.30699%203.90158%209.613%203.35447%2010.1577C2.80736%2010.7024%202.5%2011.4412%202.5%2012.2115C2.5%2012.9818%202.80736%2013.7206%203.35447%2014.2653C3.90158%2014.81%204.64362%2015.116%205.41735%2015.116H8.3347V18.0185C8.32437%2018.4063%208.39217%2018.7922%208.53408%2019.1534C8.676%2019.5147%208.88916%2019.844%209.16098%2020.1219C9.43281%2020.3998%209.7578%2020.6207%2010.1168%2020.7715C10.4757%2020.9223%2010.8614%2021%2011.251%2021C11.6406%2021%2012.0263%2020.9223%2012.3853%2020.7715C12.7443%2020.6207%2013.0692%2020.3998%2013.3411%2020.1219C13.6129%2019.844%2013.8261%2019.5147%2013.968%2019.1534C14.1099%2018.7922%2014.1777%2018.4063%2014.1674%2018.0185V15.116H17.2016C17.9439%2015.1155%2018.6557%2014.8215%2019.1805%2014.2987C19.7052%2013.7758%2020%2013.067%2020%2012.3278V6.28817C20%205.54906%2019.7052%204.84018%2019.1805%204.31736C18.6557%203.79453%2017.9439%203.50054%2017.2016%203.5Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_40003865_5312'%3e%3crect%20width='24'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" />
+        </div>
+        <p class="text-white c1-regular-comp text-center">
+          Нажимая кнопку «Крутить»,
+          <br />
+          вы соглашаетесь c
+          <a href="" class="text-[var(--linktodocs)]">условиями</a>
+        </p>
+      </div>
+      <!-- win drop -->
+      <div
+        data-js="win-controls"
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-[100] disappear flex w-full flex-col gap-[12px] px-[20px] items-center pb-[32px]"
+      >
+        <div
+          data-js="play-again-button"
+          class="flex cursor-pointer shadow-(--accent-shadow) items-center justify-center w-full h-[52px] font-bold p-[14px] bg-white rounded-[16px] uppercase text-black text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span>Играть еще</span>
+          </div>
+        </div>
+        <a
+          href="/giveaways.html"
+          data-js="to-raffles-button"
+          class="flex cursor-pointer items-center justify-center w-full h-[52px] font-bold p-[14px] bg-[#1D2023] rounded-[16px] uppercase text-white text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span data-js="to-raffles-label">к розыгрышам</span>
+          </div>
+        </a>
+      </div>
+      <div data-js="overlay" class="fixed w-full h-full left-0 top-0 bg-black opacity-50 z-[2] hidden"></div>
+      <!-- prizes -->
+       <div data-js="prizes-modal" class="w-full h-full fixed left-0 top-[100%] scrollbar-width overflow-y-scroll flex flex-col gap-[8px] z-[100] bg-white p-[20px] rounded-[32px] pb-[72px]" style="transition: top 0.35s ease-in-out">
+        <div class="flex justify-between w-full h-fit">
+          <p class="h4-wide pb-[20px]">Призы</p>
+          <div class="flex flex-col gap-[8px]">
+            <div
+            data-js="close-modal"
+              class="flex items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-[12px] bg-gray-100"
+            >
+              <img class="max-h-[36px]" src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_40005489_36364)'%3e%3cpath%20d='M6.29289%2016.2929C5.90237%2016.6834%205.90237%2017.3166%206.29289%2017.7071C6.68342%2018.0976%207.31658%2018.0976%207.70711%2017.7071L11.9999%2013.4143L16.2929%2017.7073C16.6834%2018.0978%2017.3166%2018.0978%2017.7071%2017.7073C18.0976%2017.3167%2018.0976%2016.6836%2017.7071%2016.293L13.4141%2012.0001L17.7071%207.70711C18.0976%207.31658%2018.0976%206.68342%2017.7071%206.29289C17.3166%205.90237%2016.6834%205.90237%2016.2929%206.29289L11.9999%2010.5859L7.70711%206.29304C7.31658%205.90252%206.68342%205.90252%206.2929%206.29304C5.90237%206.68357%205.90237%207.31673%206.29289%207.70726L10.5857%2012.0001L6.29289%2016.2929Z'%20fill='%231D2023'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_40005489_36364'%3e%3crect%20width='24'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" />
+          </div>
+          </div>  
+        </div>
+        <!-- segmented control -->
+        <div class="w-full flex h-fit p-[4px] bg-[#F2F3F7] rounded-[12px] relative">
+          <div data-js="tab-btn" data-tab="available" class="flex c2-bold-wide justify-center items-center h-[24px] w-full z-[2] cursor-pointer">Можно выиграть</div>
+          <div data-js="tab-btn" data-tab="won" class="flex c2-bold-wide justify-center items-center h-[24px] w-full z-[2] cursor-pointer">Вы выиграли</div>
+          <div data-js="tab-bg" class="absolute h-[24px] bg-white rounded-[8px] z-[1]" style="width: calc(50% - 4px); left: 4px; transition: left 0.25s ease-in-out"></div>
+        </div>
+        <!-- tab: available prizes -->
+        <div data-js="tab-available" class="flex flex-col gap-[8px]">
+        <!-- price 50  -->
+        <p class="pt-[8px]">За 50 баллов</p>
+        <div class="flex flex-row flex-wrap gap-[8px]">
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/stars-C_bxBtGG.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">1-5 звезд для розыгрышей</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/cinema-CBfhHjw7.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на кино</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/taxi-CB8jHyzz.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на такси и каршеринг</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/eats-DZXPqKv8.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на доставку еды</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/theaters-Deb2avfV.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на театры и концерты</p>
+          </div>
+         </div>
+        <!-- price 100  -->
+        <p class="pt-[8px]">За 100 баллов</p>
+        <div class="flex flex-row flex-wrap gap-[8px]">
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/stars-C_bxBtGG.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Все призы за 50 баллов</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/alisa-D8KPO7qO.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Яндекс Станция Миди</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/money-D-XAuErg.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">5 000 баллов кешбэка</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/steamdeck-CEAwixih.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Steam Deck OLED</p>
+          </div>
+         </div>
+        <!-- price 500  -->
+        <p class="pt-[8px]">За 500 баллов</p>
+        <div class="flex flex-row flex-wrap gap-[8px]">
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/stars-C_bxBtGG.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Все призы за 100 баллов</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/iphone-CSQLc799.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">IPhone 15 Pro Max</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/macbook--G1ciKpU.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Macbook Pro</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/airpods-VkZmzbJ5.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Apple Airpods Max</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="/shiny-fiesta/assets/money-D-XAuErg.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">50 000 баллов кешбэка</p>
+          </div>
+         </div>
+        </div>
+        <!-- tab: won prizes -->
+        <div data-js="tab-won" class="hidden flex-col gap-[8px]">
+          <div data-js="won-list" class="flex flex-row flex-wrap gap-[8px] pt-[8px]"></div>
+          <p data-js="won-empty" class="pt-[20px] h-[500px] flex justify-center items-center text-center h3-wide">Здесь пока пусто</p>
+        </div>
+       </div>
+    </div>
+  </body>
+</html>
