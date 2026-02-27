@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("/fonts/MTSWide-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("/fonts/MTSWide-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("/fonts/MTSWide-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("/fonts/MTSWide-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Wide";
+  src: url("/fonts/MTSWide-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Compact";
+  src: url("/fonts/MTSCompact-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Compact";
+  src: url("/fonts/MTSCompact-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Compact";
+  src: url("/fonts/MTSCompact-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MTS Compact";
+  src: url("/fonts/MTSCompact-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MTS Text";
+  src: url("/fonts/MTSText-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+:root {
+  --font-mts-wide: "MTS Wide", "Arial Narrow", system-ui, sans-serif;
+  --font-mts-compact: "MTS Compact", "Arial Narrow", system-ui, sans-serif;
+  --font-mts-text: "MTS Text", "Arial Narrow", system-ui, sans-serif;
+  --accent: #64aaca;
+  --shadow: #8dd1ff;
+  --linktodocs: #45b6fc;
+  --accent-shadow: 0 0 21.5px 0 var(--shadow);
+  --premium-gradient: linear-gradient(48deg, #9bd5ff 6.25%, #9b93ff 44.27%, #9a8dff 58.33%, #7c86fe 84.9%);
+  --wins-bg: rgba(255, 255, 255, 0.08);
+  --game-bg: radial-gradient(347.59% 172.46% at 50% -12.67%, #202342 36.31%, var(--accent) 58.8%);
+  --stroke: rgba(188, 195, 208, 0.5);
+  --carousel-ease: cubic-bezier(0.47, -0.14, 0.23, 1.38);
+  --iphone-prize-gradient: linear-gradient(201deg, #ffb200 -10.47%, #e82121 141.9%);
+  --airpods-prize-gradient: linear-gradient(207deg, #ff0032 -7.01%, #7421e8 96.12%);
+  --macbook-prize-gradient: linear-gradient(219deg, #5331d5 -6.1%, #1d2023 94.82%);
+  --alisa-prize-gradient: linear-gradient(207deg, #8f93ff -7.01%, #4e2ad2 96.12%);
+  --steamdeck-prize-gradient: linear-gradient(219deg, #5331d5 -6.1%, #1d2023 94.82%);
+  --giveaway-gradient: radial-gradient(347.59% 172.46% at 50% -12.67%, #202342 22.95%, #A364CA 73.68%);
+  --money-prize-gradient: linear-gradient(
+    105deg,
+    #98d8ff 0%,
+    #958eff 41.69%,
+    #9586ff 50.39%,
+    #9888ff 59.59%,
+    #b199ff 100%,
+    #b5a0ff 100%
+  );
+}
+
+.font-mts-wide {
+  font-family: var(--font-mts-wide);
+}
+
+.font-mts-compact {
+  font-family: var(--font-mts-compact);
+}
+
+.c1-regular-comp {
+  font-weight: 400;
+  font-size: 12px;
+  font-family: var(--font-mts-compact);
+  line-height: 16px;
+}
+.c1-medium-comp {
+  font-family: var(--font-mts-compact);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.c1-bold-wide {
+  font-family: var(--font-mts-wide);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.c2-bold-wide {
+  font-family: var(--font-mts-wide);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px; /* 120% */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  will-change: transform, width, height;
+  transition:
+    transform 0.8s var(--carousel-ease),
+    width 0.8s var(--carousel-ease),
+    height 0.8s var(--carousel-ease),
+    opacity 0.8s var(--carousel-ease);
+}
+
+.p3-medium-comp {
+  font-family: var(--font-mts-compact);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.p4-regular-comp {
+  font-family: var(--font-mts-compact);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.p4-medium-comp {
+  font-family: var(--font-mts-compact);
+  font-size: 14px;
+  font-weight: 500;
+}
+.h4-comp {
+  font-size: 20px;
+  font-family: var(--font-mts-compact);
+  font-weight: 500;
+}
+.h1-wide {
+  font-family: var(--font-mts-wide);
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 40px; /* 116.667% */
+}
+.h3-wide {
+  font-family: var(--font-mts-wide);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px; /* 116.667% */
+}
+.h4-wide {
+  font-family: var(--font-mts-text);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.h4-wide {
+  font-family: var(--font-mts-wide);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.price-btn.active {
+  background: white;
+  color: black;
+  border-color: white;
+}
+.bg-blur {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.blur40 {
+  backdrop-filter: blur(20px);
+}
+
+.disappear {
+  opacity: 0;
+  pointer-events: none;
+}
+.scrollbar-width {
+  scrollbar-width: none;
+}
+.lowerbg {
+  background: #f2f3f7;
+}
+#small-rays,
+#big-rays {
+  transition: opacity 0.6s ease-in-out;
+}
+#small-rays {
+  animation: small-rays-animation 300s linear infinite;
+}
+@keyframes small-rays-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#big-rays {
+  animation: big-rays-animation 150s linear infinite;
+}
+@keyframes big-rays-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

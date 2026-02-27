@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body class="bg-black font-mts-compact">
+    <div
+      class="flex rounded-[32px] overflow-hidden flex-col justify-between bg-[image:var(--game-bg)] max-w-[360px] w-full max-h-[800px] h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    >
+      <div
+        class="mix-blend-overlay opacity-50 overflow-hidden flex justify-center items-center fixed z-[1] w-full h-full"
+      >
+        <img
+          id="small-rays"
+          class="absolute min-h-[200vh] min-w-[200vh] w-auto object-cover translate-y-[-2%]"
+          src="/public/RaysSmall.svg"
+          alt=""
+        />
+        <img
+          id="big-rays"
+          class="absolute min-h-[200vh] min-w-[200vh] w-auto object-cover translate-y-[-2%] opacity-0"
+          src="/public/RaysBig.svg"
+          alt=""
+        />
+        <img class="absolute top-0 left-0 w-full h-full" src="/public/Mask.png" alt="" />
+      </div>
+      <img class="absolute top-0 left-0 w-full h-[44px] z-[10]" src="public/StatusBar.png" alt="" />
+      <img class="absolute bottom-0 left-0 w-full h-[34px] z-[10]" src="public/ios.png" alt="" />
+      <nav data-js="nav" class="z-[2] flex justify-between px-[20px] py-[12px] pt-[56px]" style="transition: opacity 0.3s ease-in-out">
+        <div class="flex flex-col gap-[8px]">
+          <div class="flex items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-[12px] bg-gray-100">
+            <img class="max-h-[36px]" src="public/IconLeft.svg" alt="" />
+          </div>
+          <div data-js="recent-wins" class="pointer-events-none user-select-none w-fit h-fit">
+            <div class="absolute blur40 flex gap-[12px] w-fit p-[8px] pr-[12px] bg-[var(--wins-bg)] rounded-[20px]">
+              <img class="bg-white rounded-[10px] p-[1px] max-h-[36px]" src="public/prizes/items/iphone.png" alt="" />
+              <div class="flex flex-col">
+                <span class="text-[14px] text-white pointer-events-none select-none leading-[18px]">Татьяная М.</span>
+                <span class="text-[12px] text-white pointer-events-none select-none leading-[18px]">
+                  IPhone 15 Pro Max
+                </span>
+              </div>
+            </div>
+            <div class="absolute blur40 flex gap-[12px] w-fit p-[8px] pr-[12px] bg-[var(--wins-bg)] rounded-[20px]">
+              <img class="bg-white rounded-[10px] p-[1px] max-h-[36px]" src="public/prizes/stars/star5.png" alt="" />
+              <div class="flex flex-col">
+                <span class="text-[14px] text-white pointer-events-none select-none leading-[18px]">Матвей В.</span>
+                <span class="text-[12px] text-white pointer-events-none select-none leading-[18px]">5 звезд</span>
+              </div>
+            </div>
+            <div class="absolute blur40 flex gap-[12px] w-fit p-[8px] pr-[12px] bg-[var(--wins-bg)] rounded-[20px]">
+              <img class="bg-white rounded-[10px] p-[1px] max-h-[36px]" src="public/prizes/Cashback/1000.png" alt="" />
+              <div class="flex flex-col">
+                <span class="text-[14px] text-white pointer-events-none select-none leading-[18px]">Иван К.</span>
+                <span class="text-[12px] text-white pointer-events-none select-none leading-[18px]">1000 баллов</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-end gap-[8px]">
+          <div
+            data-js="balance-cashback"
+            class="flex gap-[4px] items-center w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[image:var(--premium-gradient)] text-white rounded-[16px]"
+          >
+            <img src="public/badges/Premium.svg" alt="" />
+            <span data-js="balance-cashback-value">3250</span>
+          </div>
+          <a
+            data-js="balance-stars"
+            class="flex gap-[4px] items-center blur40 w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[var(--wins-bg)] text-white rounded-[16px]"
+            href="/giveaways.html"
+          >
+            <img src="public/badges/Star.svg" alt="" />
+            <span data-js="balance-stars-value">0</span>
+          </a>
+        </div>
+      </nav>
+      <div
+        data-js="game-container"
+        class="absolute top-[30%] left-1/2 transform -translate-x-1/2 w-full z-[2] flex flex-col items-center gap-[8px]"
+      >
+        <img
+          data-js="pointer"
+          class="absolute disappear top-[-10%] left-1/2 transform -translate-x-1/2"
+          style="transition: opacity 0.3s ease-in-out"
+          src="public/Pointer.svg"
+          alt=""
+        />
+        <div data-js="carousel" class="relative w-full h-[230px] overflow-hidden"></div>
+        <p
+          data-js="prize-description"
+          class="absolute h4-text text-[20px] text-center text-white top-[90%] w-[306px] disappear"
+          style="transition: opacity 0.3s ease-in-out"
+        ></p>
+        <div
+          data-js="badge-prizes"
+          class="flex gap-[] blur40 cursor-pointer w-fit h-fit py-[6px] px-[12px] bg-[var(--wins-bg)] c2-bold-wide border-[var(--stroke)] border-[1px] text-white rounded-[16px]"
+        >
+          Призы
+        </div>
+      </div>
+      <div
+        data-js="gama-controls"
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-[100] flex w-full flex-col gap-[12px] px-[20px] items-center pb-[32px]"
+      >
+        <div class="flex w-fit h-fit gap-[8px]">
+          <div
+            data-js="price-btn"
+            data-price="50"
+            class="price-btn active cursor-pointer select-none flex blur40 items-center justify-center text-white font-medium text-[17px] leading-[20px] w-[83px] h-[44px] p-[12px] bg-[var(--wins-bg)] rounded-[16px] border-[var(--stroke)] border-[1px] transition-colors duration-300"
+          >
+            50
+          </div>
+          <div
+            data-js="price-btn"
+            data-price="100"
+            class="price-btn cursor-pointer select-none flex blur40 items-center justify-center text-white font-medium text-[17px] leading-[20px] w-[83px] h-[44px] p-[12px] bg-[var(--wins-bg)] rounded-[16px] border-[var(--stroke)] border-[1px] transition-colors duration-300"
+          >
+            100
+          </div>
+          <div
+            data-js="price-btn"
+            data-price="500"
+            class="price-btn cursor-pointer select-none flex blur40 items-center justify-center text-white font-medium text-[17px] leading-[20px] w-[83px] h-[44px] p-[12px] bg-[var(--wins-bg)] rounded-[16px] border-[var(--stroke)] border-[1px] transition-colors duration-300"
+          >
+            500
+          </div>
+        </div>
+        <div
+          data-js="gama-controls-button"
+          class="flex cursor-pointer shadow-(--accent-shadow) items-center justify-center w-full h-fit font-bold p-[14px] bg-white rounded-[16px] uppercase text-black text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span>Крутить за</span>
+            <span data-js="gama-controls-button-price">50</span>
+          </div>
+          <img class="invert" src="public/badges/Premium.svg" alt="" />
+        </div>
+        <p class="text-white c1-regular-comp text-center">
+          Нажимая кнопку «Крутить»,
+          <br />
+          вы соглашаетесь c
+          <a href="" class="text-[var(--linktodocs)]">условиями</a>
+        </p>
+      </div>
+      <!-- win drop -->
+      <div
+        data-js="win-controls"
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-[100] disappear flex w-full flex-col gap-[12px] px-[20px] items-center pb-[32px]"
+      >
+        <div
+          data-js="play-again-button"
+          class="flex cursor-pointer shadow-(--accent-shadow) items-center justify-center w-full h-[52px] font-bold p-[14px] bg-white rounded-[16px] uppercase text-black text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span>Играть еще</span>
+          </div>
+        </div>
+        <a
+          href="/giveaways.html"
+          data-js="to-raffles-button"
+          class="flex cursor-pointer items-center justify-center w-full h-[52px] font-bold p-[14px] bg-[#1D2023] rounded-[16px] uppercase text-white text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span data-js="to-raffles-label">к розыгрышам</span>
+          </div>
+        </a>
+      </div>
+      <div data-js="overlay" class="fixed w-full h-full left-0 top-0 bg-black opacity-50 z-[2] hidden"></div>
+      <!-- prizes -->
+       <div data-js="prizes-modal" class="w-full h-full fixed left-0 top-[100%] scrollbar-width overflow-y-scroll flex flex-col gap-[8px] z-[100] bg-white p-[20px] rounded-[32px] pb-[72px]" style="transition: top 0.35s ease-in-out">
+        <div class="flex justify-between w-full h-fit">
+          <p class="h4-wide pb-[20px]">Призы</p>
+          <div class="flex flex-col gap-[8px]">
+            <div
+            data-js="close-modal"
+              class="flex items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-[12px] bg-gray-100"
+            >
+              <img class="max-h-[36px]" src="public/Cross.svg" alt="" />
+          </div>
+          </div>  
+        </div>
+        <!-- segmented control -->
+        <div class="w-full flex h-fit p-[4px] bg-[#F2F3F7] rounded-[12px] relative">
+          <div data-js="tab-btn" data-tab="available" class="flex c2-bold-wide justify-center items-center h-[24px] w-full z-[2] cursor-pointer">Можно выиграть</div>
+          <div data-js="tab-btn" data-tab="won" class="flex c2-bold-wide justify-center items-center h-[24px] w-full z-[2] cursor-pointer">Вы выиграли</div>
+          <div data-js="tab-bg" class="absolute h-[24px] bg-white rounded-[8px] z-[1]" style="width: calc(50% - 4px); left: 4px; transition: left 0.25s ease-in-out"></div>
+        </div>
+        <!-- tab: available prizes -->
+        <div data-js="tab-available" class="flex flex-col gap-[8px]">
+        <!-- price 50  -->
+        <p class="pt-[8px]">За 50 баллов</p>
+        <div class="flex flex-row flex-wrap gap-[8px]">
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/stars.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">1-5 звезд для розыгрышей</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/Category/cinema.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на кино</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/Category/taxi.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на такси и каршеринг</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/Category/eats.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на доставку еды</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/Category/theaters.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Доп. кешбэк на театры и концерты</p>
+          </div>
+         </div>
+        <!-- price 100  -->
+        <p class="pt-[8px]">За 100 баллов</p>
+        <div class="flex flex-row flex-wrap gap-[8px]">
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/stars.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Все призы за 50 баллов</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/items/alisa.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Яндекс Станция Миди</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/items/money.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">5 000 баллов кешбэка</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/items/steamdeck.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Steam Deck OLED</p>
+          </div>
+         </div>
+        <!-- price 500  -->
+        <p class="pt-[8px]">За 500 баллов</p>
+        <div class="flex flex-row flex-wrap gap-[8px]">
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/stars.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Все призы за 100 баллов</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/items/iphone.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">IPhone 15 Pro Max</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/items/macbook.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Macbook Pro</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/items/airpods.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">Apple Airpods Max</p>
+          </div>
+          <div class="w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center">
+            <img class="w-[80px] h-[80px] object-contain" src="public/prizes/items/money.png" alt="">
+            <p class="c1-medium-comp leading-[14px] text-center">50 000 баллов кешбэка</p>
+          </div>
+         </div>
+        </div>
+        <!-- tab: won prizes -->
+        <div data-js="tab-won" class="hidden flex-col gap-[8px]">
+          <div data-js="won-list" class="flex flex-row flex-wrap gap-[8px] pt-[8px]"></div>
+          <p data-js="won-empty" class="pt-[20px] h-[500px] flex justify-center items-center text-center h3-wide">Здесь пока пусто</p>
+        </div>
+       </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giveaways</title>
+  </head>
+  <body class="bg-black font-mts-compact" data-giveaway="iphone">
+    <div
+      class="flex rounded-[32px] flex-col gap-[12px] justify-between lowerbg max-w-[360px] w-full overflow-hidden max-h-[800px] h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    >
+      <img class="absolute top-0 left-0 w-full h-[44px] z-[10]" src="public/StatusBar.png" alt="" />
+      <img class="absolute bottom-0 left-0 w-full h-[34px] z-[10]" src="public/ios.png" alt="" />
+      <nav class="absolute z-[20] w-full flex justify-between px-[20px] py-[12px] pt-[56px]">
+        <div class="flex flex-col gap-[8px]">
+          <a
+            href="/giveaways.html"
+            class="flex items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-[12px] bg-gray-100"
+          >
+            <img class="max-h-[36px]" src="public/IconLeft.svg" alt="" />
+          </a>
+        </div>
+        <div class="flex flex-col items-end gap-[8px]">
+          <div
+            data-js="balance-cashback"
+            class="flex gap-[4px] items-center w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[image:var(--premium-gradient)] text-white rounded-[16px]"
+          >
+            <img src="public/badges/Premium.svg" alt="" />
+            <span data-js="balance-cashback-value">0</span>
+          </div>
+          <a
+            data-js="balance-stars"
+            class="flex gap-[4px] items-center blur40 w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[var(--wins-bg)] text-white rounded-[16px]"
+            href="/giveaways.html"
+          >
+            <img src="public/badges/Star.svg" alt="" />
+            <span data-js="balance-stars-value">0</span>
+          </a>
+        </div>
+      </nav>
+      <!-- shapka -->
+      <div class="flex flex-col w-full h-fit">
+        <div
+          class="flex flex-col items-center justify-end h-[400px] min-h-[400px] pt-[72px] pb-[20px] relative bg-[image:var(--iphone-prize-gradient)] w-full overflow-hidden rounded-b-[32px]"
+        >
+          <div
+            class="absolute mix-blend-overlay opacity-50 overflow-hidden top-0 left-0 flex justify-center items-center z-[1] w-full h-full"
+          >
+            <img
+              id="big-rays"
+              class="absolute min-h-[200vh] min-w-[200vh] w-auto object-cover"
+              src="/public/RaysBig.svg"
+              alt=""
+            />
+          </div>
+          <img
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-[175px] z-[2] object-contain"
+            src="public/Prizes/Items/iphone.png"
+            alt=""
+          />
+          <div class="flex flex-col gap-[8px] items-center justify-center z-[2]">
+            <div class="flex gap-[8px]">
+              <p
+                class="flex gap-[2px] c1-medium-comp text-white px-[4px] blur40 py-[2px] bg-blur w-fit h-fit rounded-[6px]"
+              >
+                <img src="public/Icon.svg" alt="" />
+                3 штуки
+              </p>
+              <p
+                class="flex gap-[2px] c1-medium-comp text-white px-[4px] blur40 py-[2px] bg-blur w-fit h-fit rounded-[6px]"
+              >
+                <img src="public/Icon-1.svg" alt="" />
+                <span data-deadline="2026-02-25T12:00:00">--:--:--</span>
+              </p>
+            </div>
+            <p class="h3-wide text-white">IPhone 15 Pro Max</p>
+          </div>
+        </div>
+        <div
+          data-js="places-section"
+          style="display: none"
+          class="flex justify-center items-center pt-[62px] pb-[12px] bg-[#1D2023] rounded-b-[32px] text-white text-center c2-bold-wide mt-[-50px]"
+        >
+          <p>
+            У вас
+            <span data-js="places-count">0</span>
+            мест в этом розыгрыше
+          </p>
+        </div>
+      </div>
+      <div class="px-[20px]">
+        <div class="w-full h-fit bg-white rounded-[24px] p-[16px] flex gap-[12px]">
+          <img src="public/ProgressCircle.svg" alt="" />
+          <div class="flex flex-col">
+            <p class="p4-medium-comp">Результаты 25.12 в 12:00</p>
+            <p class="c1-regular-comp text-[#626C77]">
+              <span data-deadline="2026-02-25T12:00:00">--:--:--</span>
+              до конца розыгрыша
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full h-full bg-white rounded-t-[32px] p-[20px]">
+        <div class="flex flex-col gap-[8px]">
+          <p class="p4-regular-comp uppercase text-[#626C77]">розыгрыш IPhone 15 Pro Max</p>
+          <p class="p4-regular-comp">
+            Покупайте места в розыгрыше. Одно место стоит
+            <span class="p4-medium-comp">5 звезд</span>
+            . Чем больше мест займете, тем выше шансов выиграть
+          </p>
+        </div>
+        <div
+          data-js="warning-stars"
+          style="display: none"
+          class="flex justify-center items-center absolute left-1/2 transform -translate-x-1/2 bottom-[106px] c1-medium-comp text-white gap-[2px] bg-[#8F8FFF] w-[241px] h-fit px-[4px] py-[2px] rounded-[6px]"
+        >
+          <img src="public/warning.svg" alt="" />
+          <span data-js="warning-stars-text" class="w-fit">Не хватает 5 звезд для покупки места</span>
+        </div>
+        <div
+          data-js="buy-place-btn"
+          style="display: none"
+          class="absolute bottom-[46px] w-[320px] flex cursor-pointer items-center justify-center h-fit font-bold p-[14px] bg-[#1D2023] rounded-[16px] uppercase text-white text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span>
+              купить место за
+              <span data-js="place-cost">5</span>
+            </span>
+          </div>
+          <img src="public/badges/Star.svg" alt="" />
+        </div>
+        <div
+          data-js="buy-stars-btn"
+          style="display: none"
+          class="absolute bottom-[46px] w-[320px] flex cursor-pointer items-center justify-center h-fit font-bold p-[14px] bg-[#1D2023] rounded-[16px] uppercase text-white text-size-[12px]"
+        >
+          <div class="flex gap-[4px] px-[8px] c1-bold-wide">
+            <span>купить 3 звезды за 100</span>
+          </div>
+          <img src="public/badges/Premium.svg" alt="" />
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      import "./src/giveaway.js";
+    </script>
+  </body>
+</html>
