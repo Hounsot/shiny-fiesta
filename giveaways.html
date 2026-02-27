@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/shiny-fiesta/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giveaways</title>
+    <script type="module" crossorigin src="/shiny-fiesta/assets/giveaways-Cez1kSJL.js"></script>
+    <link rel="modulepreload" crossorigin href="/shiny-fiesta/assets/balance-DZw02NgI.js">
+    <link rel="stylesheet" crossorigin href="/shiny-fiesta/assets/balance-BgMQMHZN.css">
+  </head>
+  <body class="bg-black font-mts-compact">
+    <div
+      class="absolute top-0 left-0 flex rounded-[32px] overflow-y-scroll scrollbar-width flex-col gap-[12px] justify-between pointer-events-none max-w-[360px] w-full max-h-[800px] h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100]"
+    >
+      <img class="fixed top-0 left-0 w-[360px] h-[44px] z-[10]" src="/shiny-fiesta/StatusBar.png" alt="" />
+      <img class="fixed bottom-0 left-0 w-[360px] h-[34px] z-[10]" src="/shiny-fiesta/ios.png" alt="" />
+    </div>
+    <div
+      class="flex rounded-[32px] overflow-y-scroll scrollbar-width flex-col gap-[12px] justify-between lowerbg max-w-[360px] w-full max-h-[800px] h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    >
+      <nav class="absolute z-[20] w-full flex justify-between px-[20px] py-[12px] pt-[56px]">
+        <div class="flex flex-col gap-[8px]">
+          <a
+            href="index.html"
+            class="flex items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-[12px] bg-gray-100"
+          >
+            <img class="max-h-[36px]" src="/shiny-fiesta/IconLeft.svg" alt="" />
+          </a>
+        </div>
+        <div class="flex flex-col items-end gap-[8px]">
+          <div
+            data-js="balance-cashback"
+            class="flex gap-[4px] items-center w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[image:var(--premium-gradient)] text-white rounded-[16px]"
+          >
+            <img src="/shiny-fiesta/badges/Premium.svg" alt="" />
+            <span data-js="balance-cashback-value">0</span>
+          </div>
+        </div>
+      </nav>
+      <div
+        class="flex bg-[image:var(--giveaway-gradient)] justify-center items-center flex-col min-h-[240px] h-[240px] w-full pt-[72px] bg-indigo-500 rounded-b-[32px]"
+      >
+        <div class="flex items-center justify-center gap-[8px]">
+          <p class="h1-wide text-white" data-js="balance-star-value">0</p>
+          <img class="pb-[4px]" src="/shiny-fiesta/badges/Star.svg" alt="" />
+        </div>
+        <p class="p4-regular-comp text-white text-center opacity-80">Обменивайте звезды на возможность участвовать в розыгрыше</p>
+      </div>
+      <!-- Уже участвуете -->
+      <div
+        data-js="participating-section"
+        style="display: none"
+        class="flex bg-white rounded-[32px] flex-col py-[20px]"
+      >
+        <div class="flex flex-col gap-[4px] px-[20px] py-[12px]">
+          <h3 class="h4-wide">Уже участвуете</h3>
+          <p class="c1-regular-comp text-[#626C77]">Розыгрыши, в которых вы купили шанс</p>
+        </div>
+        <div data-js="participating-list" class="px-[20px] flex flex-col gap-[18px]"></div>
+      </div>
+      <!-- Все розыгрыши -->
+      <div class="flex bg-white rounded-[32px] flex-col py-[20px]">
+        <div class="flex flex-col gap-[4px] px-[20px] py-[12px]">
+          <h3 class="h4-wide">Все розыгрыши</h3>
+          <p class="c1-regular-comp text-[#626C77]">Розыгрыши, в которых вы можете стать победителем</p>
+        </div>
+        <div class="px-[20px] flex flex-col gap-[18px]">
+          <a
+            href="iphone.html"
+            data-giveaway="iphone"
+            class="cursor-pointer flex w-full h-fit rounded-[24px] bg-[image:var(--iphone-prize-gradient)] text-white overflow-hidden"
+          >
+            <div class="flex flex-col gap-[12px] px-[20px] py-[12px]">
+              <div class="flex flex-col gap-[4px]">
+                <p class="h4-comp">IPhone 15 Pro Max</p>
+                <p class="p4-regular-comp">25.02</p>
+              </div>
+              <div class="flex flex-col gap-[4px]">
+                <p
+                  data-js="places-label"
+                  class="c1-medium-comp px-[4px] py-[2px] bg-blur w-fit h-fit rounded-[6px]"
+                  style="display: none"
+                ></p>
+                <div data-js="action-label" class="c2-bold-wide h-fit w-fit p-[8px] bg-white text-black rounded-[12px]">
+                  Участвовать
+                </div>
+              </div>
+            </div>
+            <img class="min-h-full max-w-[100px] flex-1 object-contain" src="/shiny-fiesta/prizes/items/iphone.png" alt="" />
+          </a>
+          <a
+            href="airpods.html"
+            data-giveaway="airpods"
+            class="cursor-pointer flex w-full h-fit rounded-[24px] bg-[image:var(--airpods-prize-gradient)] text-white overflow-hidden"
+          >
+            <div class="flex flex-col gap-[12px] px-[20px] py-[12px]">
+              <div class="flex flex-col gap-[4px]">
+                <p class="h4-comp">Apple Airpods Max</p>
+                <p class="p4-regular-comp">22.02</p>
+              </div>
+              <div class="flex flex-col gap-[4px]">
+                <p
+                  data-js="places-label"
+                  class="c1-medium-comp px-[4px] py-[2px] bg-blur w-fit h-fit rounded-[6px]"
+                  style="display: none"
+                ></p>
+                <div data-js="action-label" class="c2-bold-wide h-fit w-fit p-[8px] bg-white text-black rounded-[12px]">
+                  Участвовать
+                </div>
+              </div>
+            </div>
+            <img class="min-h-full max-w-[100px] flex-1 object-contain" src="/shiny-fiesta/prizes/items/airpods.png" alt="" />
+          </a>
+          <a
+            href="money.html"
+            data-giveaway="money"
+            class="cursor-pointer flex w-full h-fit rounded-[24px] bg-[image:var(--money-prize-gradient)] text-white overflow-hidden"
+          >
+            <div class="flex flex-col gap-[12px] px-[20px] py-[12px]">
+              <div class="flex flex-col gap-[4px]">
+                <p class="h4-comp">50 000 ₽</p>
+                <p class="p4-regular-comp">22.02</p>
+              </div>
+              <div class="flex flex-col gap-[4px]">
+                <p
+                  data-js="places-label"
+                  class="c1-medium-comp px-[4px] py-[2px] bg-blur w-fit h-fit rounded-[6px]"
+                  style="display: none"
+                ></p>
+                <div data-js="action-label" class="c2-bold-wide h-fit w-fit p-[8px] bg-white text-black rounded-[12px]">
+                  Участвовать
+                </div>
+              </div>
+            </div>
+            <img class="min-h-full max-w-[100px] flex-1 object-contain" src="/shiny-fiesta/prizes/items/airpods.png" alt="" />
+          </a>
+          <a
+            href="steamdeck.html"
+            data-giveaway="steamdeck"
+            class="cursor-pointer flex w-full h-fit rounded-[24px] bg-[image:var(--steamdeck-prize-gradient)] text-white overflow-hidden"
+          >
+            <div class="flex flex-col gap-[12px] px-[20px] py-[12px]">
+              <div class="flex flex-col gap-[4px]">
+                <p class="h4-comp">Steam Deck OLED</p>
+                <p class="p4-regular-comp">05.03</p>
+              </div>
+              <div class="flex flex-col gap-[4px]">
+                <p
+                  data-js="places-label"
+                  class="c1-medium-comp px-[4px] py-[2px] bg-blur w-fit h-fit rounded-[6px]"
+                  style="display: none"
+                ></p>
+                <div data-js="action-label" class="c2-bold-wide h-fit w-fit p-[8px] bg-white text-black rounded-[12px]">
+                  Участвовать
+                </div>
+              </div>
+            </div>
+            <img
+              class="min-h-full max-w-[100px] flex-1 object-contain"
+              src="/shiny-fiesta/prizes/items/steamdeck.png"
+              alt=""
+            />
+          </a>
+          <a
+            href="alisa.html"
+            data-giveaway="alisa"
+            class="cursor-pointer flex w-full h-fit rounded-[24px] bg-[image:var(--alisa-prize-gradient)] text-white overflow-hidden"
+          >
+            <div class="flex flex-col gap-[12px] px-[20px] py-[12px]">
+              <div class="flex flex-col gap-[4px]">
+                <p class="h4-comp">Яндекс Станция Миди</p>
+                <p class="p4-regular-comp">05.03</p>
+              </div>
+              <div class="flex flex-col gap-[4px]">
+                <p
+                  data-js="places-label"
+                  class="c1-medium-comp px-[4px] py-[2px] bg-blur w-fit h-fit rounded-[6px]"
+                  style="display: none"
+                ></p>
+                <div data-js="action-label" class="c2-bold-wide h-fit w-fit p-[8px] bg-white text-black rounded-[12px]">
+                  Участвовать
+                </div>
+              </div>
+            </div>
+            <img class="min-h-full max-w-[100px] flex-1 object-contain" src="/shiny-fiesta/prizes/items/alisa.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
