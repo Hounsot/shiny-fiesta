@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/shiny-fiesta/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Призы</title>
+    <script type="module" crossorigin src="/shiny-fiesta/assets/prizes-Bp5A1a50.js"></script>
+    <link rel="modulepreload" crossorigin href="/shiny-fiesta/assets/balance-BZ1F0WeW.js">
+    <link rel="stylesheet" crossorigin href="/shiny-fiesta/assets/balance-DMNu2fjL.css">
+  </head>
+  <body class="bg-black font-mts-compact">
+    <div
+      class="absolute top-0 left-0 flex rounded-[32px] overflow-y-scroll scrollbar-width flex-col pointer-events-none max-w-[360px] w-full max-h-[800px] h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100]"
+    >
+      <img class="fixed top-0 left-0 w-[360px] h-[44px] z-[10]" src="StatusBar.png" alt="" />
+      <img class="fixed bottom-0 left-0 w-[360px] h-[34px] z-[10]" src="ios.png" alt="" />
+    </div>
+    <div
+      class="flex rounded-[32px] overflow-y-scroll scrollbar-width flex-col lowerbg max-w-[360px] w-full max-h-[800px] h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    >
+      <nav class="absolute z-[20] w-full flex justify-between px-[20px] py-[12px] pt-[56px]">
+        <div class="flex flex-col gap-[8px]">
+          <a
+            href="/"
+            class="flex items-center justify-center contrast-120 cursor-pointer w-[32px] h-[32px] rounded-[12px] bg-blur blur40"
+          >
+            <img class="max-h-[36px] invert" src="IconLeft.svg" alt="" />
+          </a>
+        </div>
+        <div class="flex flex-col items-end gap-[8px]">
+          <div
+            data-js="balance-cashback"
+            class="flex gap-[4px] items-center w-fit h-fit py-[4px] px-[10px] pl-[8px] bg-[image:var(--premium-gradient)] text-white rounded-[16px]"
+          >
+            <img src="badges/Premium.svg" alt="" />
+            <span data-js="balance-cashback-value">0</span>
+          </div>
+        </div>
+      </nav>
+      <!-- Giveaway promo -->
+      <div class="flex flex-col w-full h-fit">
+        <div
+          class="flex flex-col items-center justify-center gap-[12px] min-h-[524px] pt-[72px] pb-[20px] relative bg-[image:var(--iphone-prize-gradient)] w-full overflow-hidden"
+        >
+          <div
+            class="absolute mix-blend-overlay opacity-50 overflow-hidden top-0 left-0 flex justify-center items-center z-[1] w-full h-full"
+          >
+            <img id="big-rays"
+              class="absolute -translate-y-[-2%] min-h-[200vh] min-w-[200vh] w-auto object-cover"
+              src="RaysBig.svg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col gap-[8px] items-center z-[2]">
+            <p class="h3-wide text-white text-center">Розыгрыш<br>IPhone 17 Pro Max</p>
+            <p class="flex gap-[4px] items-center border-[#FFFFFF30] border-[1px] c1-medium-comp text-white px-[8px] py-[4px] blur40 bg-blur rounded-[10px] contrast-120">
+              <img src="Icon-1.svg" alt="" class="w-[14px] h-[14px]" />
+              Результаты 31 апреля
+            </p>
+          </div>
+          <img
+            class="relative z-[2] w-[220px] h-[220px] object-contain"
+            src="prizes/Items/iphone.png"
+            alt=""
+          />
+          <a
+            href="#"
+            class="relative z-[2] flex items-center gap-[4px] cursor-pointer px-[20px] py-[10px] bg-white rounded-[16px] c2-bold-wide text-black"
+          >
+            Детали розыгрыша
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Prizes section -->
+      <div class="flex flex-col bg-white rounded-t-[32px] p-[20px] mt-[-24px] relative z-[3]">
+        <p class="h4-wide pb-[16px]">Призы</p>
+        <!-- segmented control -->
+        <div class="w-full flex h-fit p-[4px] bg-[#F2F3F7] rounded-[12px] relative mb-[16px]">
+          <div data-js="tab-btn" data-tab="available" class="flex c2-bold-wide justify-center items-center h-[24px] w-full z-[2] cursor-pointer">Можно выиграть</div>
+          <div data-js="tab-btn" data-tab="won" class="flex c2-bold-wide justify-center items-center h-[24px] w-full z-[2] cursor-pointer">Вы выиграли</div>
+          <div data-js="tab-bg" class="absolute h-[24px] bg-white rounded-[8px] z-[1]" style="width: calc(50% - 4px); left: 4px; transition: left 0.25s ease-in-out"></div>
+        </div>
+        <!-- tab: available prizes -->
+        <div data-js="tab-available" class="flex flex-row flex-wrap gap-[8px]">
+          <!-- Билеты для розыгрыша -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--tickets-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Билеты для<br>розыгрыша</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">1/3/5</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/tickets.png" alt="">
+            </div>
+          </div>
+          <!-- Кешбэк на ЖКХ/ЖКУ -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--cashback-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Кешбэк<br>на ЖКХ/ЖКУ</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">10%</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/home.png" alt="">
+            </div>
+          </div>
+          <!-- Деньги на связь абонентам МТС -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--money-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Деньги на связь<br>абонентам МТС</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">30 ₽</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/mts.png" alt="">
+            </div>
+          </div>
+          <!-- Кешбэк на услуги Медси -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--partner-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Кешбэк на услуги<br>Медси</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">3/6%</p>
+              <img class="w-[52px] h-[52px] object-contain" src="prizes/previews/medsi.png" alt="">
+            </div>
+          </div>
+          <!-- Баллы МТС Premium -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--cashback-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Баллы МТС<br>Premium</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">до 150</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/premium.png" alt="">
+            </div>
+          </div>
+          <!-- Деньги на карту МТС Деньги -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--money-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Деньги на карту<br>МТС Деньги</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">20 ₽</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/card.png" alt="">
+            </div>
+          </div>
+          <!-- Деньги на счёт «Кешбокс» -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--money-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Деньги на счёт<br>«Кешбокс»</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">50 ₽</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/cashbox.png" alt="">
+            </div>
+          </div>
+          <!-- Кешбэк на авиабилеты -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--cashback-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Кешбэк<br>на авиабилеты</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">15%</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/air.png" alt="">
+            </div>
+          </div>
+          <!-- Кешбэк на образование -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--cashback-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Кешбэк<br>на образование</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">10%</p>
+              <img class="w-[80px] h-[80px] object-contain absolute right-0 bottom-0" src="prizes/previews/edu.png" alt="">
+            </div>
+          </div>
+          <!-- Кешбэк на отели и туры Level Travel -->
+          <div class="prize-card w-[calc(50%-4px)] min-h-[148px] bg-[image:var(--partner-grad)] rounded-[20px] p-[16px] flex flex-col justify-between relative overflow-hidden">
+            <p class="p4-medium-comp leading-[18px] text-[#1D2023]">Кешбэк на отели<br>и туры Level Travel</p>
+            <div class="flex justify-between items-end">
+              <p class="p4-medium-comp text-[#1D2023] bg-white px-[6px] py-[2px] rounded-[8px]">5/10%</p>
+              <img class="w-[52px] h-[52px] object-contain" src="prizes/previews/level.png" alt="">
+            </div>
+          </div>
+        </div>
+        <!-- tab: won prizes -->
+        <div data-js="tab-won" class="hidden flex-row flex-wrap gap-[8px]">
+          <div data-js="won-list" class="flex flex-row flex-wrap gap-[8px] w-full"></div>
+          <p data-js="won-empty" class="pt-[20px] w-full h-[300px] flex justify-center items-center text-center h3-wide">Здесь пока пусто</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
