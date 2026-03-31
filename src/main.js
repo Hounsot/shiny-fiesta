@@ -1,38 +1,94 @@
 import "./style.css";
-import "./recent-wins.js";
-import { getCashback, setCashback, getStars, setStars, updateDisplays, injectResetButton } from "./balance.js";
+import { getCashback, setCashback, updateDisplays, injectResetButton } from "./balance.js";
 
 /* ─── Prize pool ─── */
 
 const PRIZES = [
-  { type: "cashback", value: 25, image: "public/prizes/Cashback/25.png", label: "25 баллов" },
-  { type: "stars", value: 1, image: "public/prizes/Stars/star1.png", label: "1 звезда" },
-  { type: "cashback", value: 100, image: "public/prizes/Cashback/100.png", label: "100 баллов" },
-  { type: "category", value: 0, image: "public/prizes/Category/cinema.png", label: "Кино", desc: "Дополнительный кешбэк 20% на кино в марте" },
-  { type: "cashback", value: 200, image: "public/prizes/Cashback/200.png", label: "200 баллов" },
-  { type: "stars", value: 3, image: "public/prizes/Stars/star3.png", label: "3 звезды" },
-  { type: "item", value: 0, image: "public/prizes/Items/iphone.png", label: "iPhone" },
-  { type: "stars", value: 5, image: "public/prizes/Stars/star5.png", label: "5 звёзд" },
+  // Баллы Premium
+  { type: "points", value: 15, image: "public/prizes/Cashback/15.png", label: "15 баллов Premium" },
+  { type: "points", value: 30, image: "public/prizes/Cashback/30.png", label: "30 баллов Premium" },
+  { type: "points", value: 60, image: "public/prizes/Cashback/60.png", label: "60 баллов Premium" },
+  { type: "points", value: 150, image: "public/prizes/Cashback/150.png", label: "150 баллов Premium" },
+
+  // Кешбэк категории
+  { type: "cashback_category", value: 0, image: "public/prizes/Category/tickets.png", label: "15% на Авиабилеты", desc: "Автоматически применим на ваш счет" },
+  { type: "cashback_category", value: 0, image: "public/prizes/Category/education.png", label: "10% на Образование", desc: "Автоматически применим на ваш счет" },
+  { type: "cashback_category", value: 0, image: "public/prizes/Category/home.png", label: "10% на ЖКХ/ЖКУ", desc: "Автоматически применим на ваш счет" },
+
+  // Билеты на розыгрыш
+  { type: "ticket", value: 1, image: "public/prizes/Items/ticket1.png", label: "Билет на IPhone 17 Pro Max" },
+  { type: "ticket", value: 3, image: "public/prizes/Items/ticket3.png", label: "3 Билета на IPhone 17 Pro Max" },
+  { type: "ticket", value: 5, image: "public/prizes/Items/ticket5.png", label: "5 Билетов на IPhone 17 Pro Max" },
+
+  // Партнёрские предложения
+  { type: "partner", value: 0, image: "public/prizes/Category/cinema.png", label: "Level Travel", desc: "5% за оплату в категории Туры\n10% за оплату в категории Отели", tag: "До 13 апреля" },
+  { type: "partner", value: 0, image: "public/prizes/Category/cinema.png", label: "Медси", desc: "6% за все последующие платежи по картам МТС Банка", tag: "До 13 апреля" },
+
+  // Деньги внутри экосистемы МТС
+  { type: "money", value: 30, image: "public/prizes/Cashback/mts.png", label: "30 ₽ на связь МТС", desc: "Начислим в конце месяца, если вы абонент МТС. Иначе — деньги на карту" },
+  { type: "money", value: 50, image: "public/prizes/Cashback/cashbox.png", label: "50 ₽ на накопительный счет «Кешбокс»", desc: "Начислим в конце месяца, если у вас есть счет", secondBtn: "открыть кешбокс", secondBtnHref: "#" },
+  { type: "money", value: 20, image: "public/prizes/Cashback/card.png", label: "20 ₽ на карту МТС Деньги", desc: "Начислим в конце месяца" },
 ];
 
-function getPrizeDescription(prize) {
+function getWinScreenData(prize) {
   switch (prize.type) {
-    case "stars":
-      return "Звезда для участия в розыгрыше. Призы уже ждут тебя";
-    case "cashback":
-      return `${prize.value} баллов кешбэка`;
-    case "item":
-      return "Бесплатно закажите этот товар в МТС Shop";
-    case "category":
-      return prize.desc;
+    case "points":
+      return {
+        title: `${prize.value} баллов Premium`,
+        subtitle: "Зачислим в течение дня",
+      };
+    case "cashback_category":
+      return {
+        title: prize.label,
+        subtitle: prize.desc,
+        secondBtn: "подробнее о предложении",
+        secondBtnHref: "#",
+      };
+    case "ticket":
+      return {
+        title: prize.label,
+        subtitle: "Чем больше у вас билетов — тем выше шансы",
+        secondBtn: "как работают билеты?",
+        secondBtnHref: "#",
+      };
+    case "partner":
+      return {
+        title: prize.label,
+        subtitle: prize.desc,
+        tag: prize.tag,
+        secondBtn: "к партнеру",
+        secondBtnHref: "#",
+      };
+    case "money":
+      return {
+        title: prize.label,
+        subtitle: prize.desc,
+        secondBtn: prize.secondBtn,
+        secondBtnHref: prize.secondBtnHref,
+      };
     default:
-      return "";
+      return { title: prize.label, subtitle: "" };
   }
 }
 
 /* ─── Balance ─── */
 
-let selectedPrice = 50;
+const SPIN_PRICE = 30;
+
+function hasFreeSpin() {
+  return !localStorage.getItem("free_spin_used");
+}
+
+function useFreeSpin() {
+  localStorage.setItem("free_spin_used", "1");
+}
+
+function resetFreeSpinTimer() {
+  localStorage.removeItem("free_spin_used");
+  updateSpinButton();
+}
+
+window.__resetFreeSpinTimer = resetFreeSpinTimer;
 
 /* ─── Carousel setup ─── */
 
@@ -42,6 +98,33 @@ const GAP = 12;
 const STEP = ACTIVE_SIZE / 2 + GAP + INACTIVE_SIZE / 2;
 
 const carousel = document.querySelector('[data-js="carousel"]');
+
+function shuffleNoAdjacentSameType(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  for (let attempt = 0; attempt < 200; attempt++) {
+    let conflict = -1;
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i].type === arr[i - 1].type) { conflict = i; break; }
+    }
+    if (conflict === -1) break;
+    const swapWith = Math.floor(Math.random() * arr.length);
+    if (swapWith !== conflict) {
+      [arr[conflict], arr[swapWith]] = [arr[swapWith], arr[conflict]];
+    }
+  }
+  return arr;
+}
+
+shuffleNoAdjacentSameType(PRIZES);
+
+const JACKPOT_TYPES = ["points_150", "ticket_5"];
+function isJackpot(prize) {
+  return (prize.type === "points" && prize.value === 150) ||
+         (prize.type === "ticket" && prize.value === 5);
+}
 
 function buildCarouselItems() {
   carousel.innerHTML = "";
@@ -66,16 +149,20 @@ const count = items.length;
 /* ─── DOM refs ─── */
 
 const spinBtn = document.querySelector('[data-js="gama-controls-button"]');
-const priceLabel = document.querySelector('[data-js="gama-controls-button-price"]');
-const priceBtns = document.querySelectorAll('[data-js="price-btn"]');
+const spinBtnLabel = document.querySelector('[data-js="spin-btn-label"]');
+const spinBtnIcon = document.querySelector('[data-js="spin-btn-icon"]');
 const gameControls = document.querySelector('[data-js="gama-controls"]');
 const badgePrizes = document.querySelector('[data-js="badge-prizes"]');
 const winControls = document.querySelector('[data-js="win-controls"]');
 const playAgainBtn = document.querySelector('[data-js="play-again-button"]');
 const pointer = document.querySelector('[data-js="pointer"]');
-const prizeDescription = document.querySelector('[data-js="prize-description"]');
-const toRafflesBtn = document.querySelector('[data-js="to-raffles-button"]');
-const toRafflesLabel = document.querySelector('[data-js="to-raffles-label"]');
+const prizeInfo = document.querySelector('[data-js="prize-info"]');
+const prizeTitle = document.querySelector('[data-js="prize-title"]');
+const prizeSubtitle = document.querySelector('[data-js="prize-subtitle"]');
+const prizeTag = document.querySelector('[data-js="prize-tag"]');
+const prizeTagText = document.querySelector('[data-js="prize-tag-text"]');
+const secondActionBtn = document.querySelector('[data-js="second-action-button"]');
+const secondActionLabel = document.querySelector('[data-js="second-action-label"]');
 const nav = document.querySelector('[data-js="nav"]');
 const smallRays = document.getElementById("small-rays");
 const bigRays = document.getElementById("big-rays");
@@ -83,6 +170,68 @@ const bigRays = document.getElementById("big-rays");
 let activeIndex = 0;
 let isSpinning = false;
 let idleTimer = null;
+
+/* ─── Carousel side items visibility ─── */
+
+function hideSideItems() {
+  items.forEach((item, i) => {
+    if (i !== activeIndex) {
+      item.style.transition = "opacity 0.3s ease-in-out";
+      item.style.opacity = "0";
+    }
+  });
+}
+
+function restoreSideItems() {
+  items.forEach((item) => {
+    item.style.transition = "";
+  });
+}
+
+/* ─── rays transition ─── */
+
+function getRayAnimation(el) {
+  const anims = el.getAnimations();
+  return anims.length ? anims[0] : null;
+}
+
+function rampPlaybackRate(el, targetRate, durationMs) {
+  const anim = getRayAnimation(el);
+  if (!anim) return;
+  const startRate = anim.playbackRate;
+  const t0 = performance.now();
+  function step(now) {
+    const t = Math.min((now - t0) / durationMs, 1);
+    const ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    anim.playbackRate = startRate + (targetRate - startRate) * ease;
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const RAYS_FAST_RATE = 30;
+
+function animateRaysTransition() {
+  rampPlaybackRate(smallRays, RAYS_FAST_RATE, 600);
+  rampPlaybackRate(bigRays, RAYS_FAST_RATE, 600);
+
+  bigRays.style.opacity = "1";
+
+  setTimeout(() => {
+    smallRays.style.opacity = "0";
+  }, 200);
+
+  setTimeout(() => {
+    rampPlaybackRate(bigRays, 1, 1000);
+  }, 800);
+}
+
+function resetRaysSpeed() {
+  const a1 = getRayAnimation(smallRays);
+  const a2 = getRayAnimation(bigRays);
+  if (a1) a1.playbackRate = 1;
+  if (a2) a2.playbackRate = 1;
+}
 
 /* ─── UI state ─── */
 
@@ -93,10 +242,12 @@ function showGameControls() {
   gameControls.classList.remove("disappear");
   badgePrizes.classList.remove("disappear");
   winControls.classList.add("disappear");
-  prizeDescription.classList.add("disappear");
+  prizeInfo.classList.add("disappear");
   nav.classList.remove("disappear");
+  resetRaysSpeed();
   smallRays.style.opacity = "1";
   bigRays.style.opacity = "0";
+  restoreSideItems();
 }
 
 function hideGameControls() {
@@ -109,24 +260,41 @@ function hideGameControls() {
 }
 
 function showWinControls(prize) {
+  const data = getWinScreenData(prize);
+
   gameControls.style.transition = "opacity 0.3s ease-in-out";
   badgePrizes.style.transition = "opacity 0.3s ease-in-out";
   winControls.style.transition = "opacity 0.3s ease-in-out";
   winControls.classList.remove("disappear");
   pointer.classList.add("disappear");
-  prizeDescription.textContent = getPrizeDescription(prize);
-  prizeDescription.classList.remove("disappear");
 
-  if (prize.type === "item") {
-    toRafflesLabel.textContent = "в МТС Shop";
-    toRafflesBtn.href = "#";
+  prizeTitle.textContent = data.title;
+  prizeSubtitle.textContent = data.subtitle;
+
+  if (data.tag) {
+    prizeTag.classList.remove("hidden");
+    prizeTagText.textContent = data.tag;
   } else {
-    toRafflesLabel.textContent = "к розыгрышам";
-    toRafflesBtn.href = "/giveaways.html";
+    prizeTag.classList.add("hidden");
   }
 
-  smallRays.style.opacity = "0";
-  bigRays.style.opacity = "1";
+  prizeInfo.classList.remove("disappear");
+
+  if (data.secondBtn) {
+    secondActionBtn.classList.remove("hidden");
+    secondActionBtn.style.display = "flex";
+    secondActionLabel.textContent = data.secondBtn;
+    secondActionBtn.href = data.secondBtnHref || "#";
+  } else {
+    secondActionBtn.classList.add("hidden");
+    secondActionBtn.style.display = "";
+  }
+
+  nav.classList.remove("disappear");
+
+  hideSideItems();
+
+  animateRaysTransition();
 }
 
 /* ─── Idle: step-by-step with CSS transitions ─── */
@@ -222,38 +390,84 @@ function spinEasing(t) {
 }
 
 function awardPrize(prize) {
-  if (prize.type === "cashback") {
+  if (prize.type === "points") {
     setCashback(getCashback() + prize.value);
-  } else if (prize.type === "stars") {
-    setStars(getStars() + prize.value);
   }
   saveWonPrize(prize);
 }
 
+function saveWonPrize(prize) {
+  const list = getWonPrizes();
+  list.push({ image: prize.image, label: prize.label, type: prize.type, value: prize.value });
+  localStorage.setItem("wonPrizes", JSON.stringify(list));
+}
+
+function getWonPrizes() {
+  try { return JSON.parse(localStorage.getItem("wonPrizes") || "[]"); }
+  catch { return []; }
+}
+
 function spin() {
   if (isSpinning) return;
-  if (getCashback() < selectedPrice) return;
+
+  const free = hasFreeSpin();
+  if (!free && getCashback() < SPIN_PRICE) return;
 
   isSpinning = true;
-  setCashback(getCashback() - selectedPrice);
+  if (free) {
+    useFreeSpin();
+  } else {
+    setCashback(getCashback() - SPIN_PRICE);
+  }
   stopIdle();
   hideGameControls();
 
   const targetIndex = Math.floor(Math.random() * count);
+
+  const nextIndex = (targetIndex + 1) % count;
+  if (!isJackpot(PRIZES[nextIndex])) {
+    const jackpots = PRIZES.map((p, i) => i).filter((i) => isJackpot(PRIZES[i]) && i !== targetIndex);
+    if (jackpots.length > 0) {
+      const pick = jackpots[Math.floor(Math.random() * jackpots.length)];
+      [PRIZES[nextIndex], PRIZES[pick]] = [PRIZES[pick], PRIZES[nextIndex]];
+      const oldSrc = items[nextIndex].querySelector("img").src;
+      items[nextIndex].querySelector("img").src = items[pick].querySelector("img").src;
+      items[pick].querySelector("img").src = oldSrc;
+      items[nextIndex].querySelector("img").alt = PRIZES[nextIndex].label;
+      items[pick].querySelector("img").alt = PRIZES[pick].label;
+    }
+  }
+
   const fullRotations = 5 + Math.floor(Math.random() * 2);
   let dist = targetIndex - activeIndex;
   if (dist <= 0) dist += count;
   const totalDist = fullRotations * count + dist;
 
+  const doOvershoot = Math.random() < 0.9;
+  const overshootPx = doOvershoot ? (50 + Math.random() * 30) : 0;
+  const overshootItems = overshootPx / STEP;
+
   const startPos = activeIndex;
-  const duration = 8000;
+  const spinDuration = 6200;
+  const bounceDuration = doOvershoot ? 450 : 0;
+  const totalDuration = spinDuration + bounceDuration;
   const t0 = performance.now();
 
   function tick(now) {
-    const t = Math.min((now - t0) / duration, 1);
-    renderContinuous(startPos + totalDist * spinEasing(t));
+    const elapsed = now - t0;
 
-    if (t < 1) {
+    if (elapsed < spinDuration) {
+      const t = elapsed / spinDuration;
+      const pos = startPos + (totalDist + overshootItems) * spinEasing(t);
+      renderContinuous(pos);
+      requestAnimationFrame(tick);
+    } else if (doOvershoot && elapsed < totalDuration) {
+      const bt = (elapsed - spinDuration) / bounceDuration;
+      const ease = bt < 0.5
+        ? 4 * bt * bt * bt
+        : 1 - Math.pow(-2 * bt + 2, 3) / 2;
+      const pos = startPos + totalDist + overshootItems * (1 - ease);
+      renderContinuous(pos);
       requestAnimationFrame(tick);
     } else {
       activeIndex = targetIndex;
@@ -272,123 +486,27 @@ function spin() {
 
 function playAgain() {
   showGameControls();
+  updateSpinButton();
   startIdle();
 }
 
-/* ─── Grade selection ─── */
+/* ─── Spin button state ─── */
 
-const GRADES = {
-  50: { accent: "#64aaca", shadow: "#8dd1ff", linktodocs: "#0070E5" },
-  100: { accent: "#6564ca", shadow: "#c48dff", linktodocs: "#45b6fc" },
-  500: { accent: "#a364ca", shadow: "#ff8df2", linktodocs: "#45b6fc" },
-};
-
-function selectGrade(price) {
-  const grade = GRADES[price];
-  if (!grade) return;
-
-  selectedPrice = price;
-  document.documentElement.style.setProperty("--accent", grade.accent);
-  document.documentElement.style.setProperty("--shadow", grade.shadow);
-  document.documentElement.style.setProperty("--linktodocs", grade.linktodocs);
-
-  priceBtns.forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.price === String(price));
-  });
-
-  priceLabel.textContent = price;
-}
-
-/* ─── Won prizes ─── */
-
-function getWonPrizes() {
-  try { return JSON.parse(localStorage.getItem("wonPrizes") || "[]"); }
-  catch { return []; }
-}
-
-function saveWonPrize(prize) {
-  const list = getWonPrizes();
-  list.push({ image: prize.image, label: prize.label, type: prize.type, value: prize.value });
-  localStorage.setItem("wonPrizes", JSON.stringify(list));
-}
-
-function renderWonPrizes() {
-  const container = document.querySelector('[data-js="won-list"]');
-  const emptyMsg = document.querySelector('[data-js="won-empty"]');
-  const list = getWonPrizes();
-  container.innerHTML = "";
-
-  if (list.length === 0) {
-    emptyMsg.classList.remove("hidden");
-    return;
-  }
-
-  emptyMsg.classList.add("hidden");
-  list.forEach((p) => {
-    const card = document.createElement("div");
-    card.className = "w-[156px] h-[136px] lowerbg rounded-[20px] px-[16px] py-[8px] flex flex-col justify-between items-center";
-    card.innerHTML = `<img class="w-[80px] h-[80px] object-contain" src="${p.image}" alt=""><p class="c1-medium-comp leading-[14px] text-center">${p.label}</p>`;
-    container.appendChild(card);
-  });
-}
-
-/* ─── Segmented control ─── */
-
-const tabBtns = document.querySelectorAll('[data-js="tab-btn"]');
-const tabBg = document.querySelector('[data-js="tab-bg"]');
-const tabAvailable = document.querySelector('[data-js="tab-available"]');
-const tabWon = document.querySelector('[data-js="tab-won"]');
-
-function switchTab(tab) {
-  if (tab === "available") {
-    tabBg.style.left = "4px";
-    tabAvailable.classList.remove("hidden");
-    tabAvailable.style.display = "flex";
-    tabWon.classList.add("hidden");
-    tabWon.style.display = "";
+function updateSpinButton() {
+  if (hasFreeSpin()) {
+    spinBtnLabel.textContent = "Крутить бесплатно";
+    spinBtnIcon.classList.add("hidden");
   } else {
-    tabBg.style.left = "calc(50%)";
-    tabAvailable.classList.add("hidden");
-    tabAvailable.style.display = "";
-    tabWon.classList.remove("hidden");
-    tabWon.style.display = "flex";
-    renderWonPrizes();
+    spinBtnLabel.textContent = `Крутить за ${SPIN_PRICE}`;
+    spinBtnIcon.classList.remove("hidden");
   }
 }
-
-tabBtns.forEach((btn) => {
-  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
-});
-
-/* ─── Prizes modal ─── */
-
-const overlay = document.querySelector('[data-js="overlay"]');
-const prizesModal = document.querySelector('[data-js="prizes-modal"]');
-const closeModalBtn = document.querySelector('[data-js="close-modal"]');
-
-function openPrizesModal() {
-  switchTab("available");
-  overlay.classList.remove("hidden");
-  prizesModal.style.top = "52px";
-}
-
-function closePrizesModal() {
-  prizesModal.style.top = "100%";
-  overlay.classList.add("hidden");
-}
-
-badgePrizes.addEventListener("click", openPrizesModal);
-overlay.addEventListener("click", closePrizesModal);
-closeModalBtn.addEventListener("click", closePrizesModal);
 
 /* ─── Init ─── */
 
-selectGrade(50);
 updateDisplays();
+updateSpinButton();
 injectResetButton();
 startIdle();
 spinBtn.addEventListener("click", spin);
 playAgainBtn.addEventListener("click", playAgain);
-priceBtns.forEach((btn) => {
-  btn.addEventListener("click", () => selectGrade(Number(btn.dataset.price)));
-});

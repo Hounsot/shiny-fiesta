@@ -58,6 +58,7 @@ export function setPlaces(giveawayId, count) {
 export function resetAll() {
   localStorage.removeItem("balance_cashback");
   localStorage.removeItem("balance_stars");
+  localStorage.removeItem("free_spin_used");
   Object.keys(GIVEAWAYS).forEach((id) => {
     localStorage.removeItem(`giveaway_places_${id}`);
   });
@@ -65,12 +66,32 @@ export function resetAll() {
 }
 
 export function injectResetButton() {
+  const baseCss =
+    "padding:6px 14px;border-radius:10px;color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;opacity:0.7;font-family:system-ui";
+
+  const wrapper = document.createElement("div");
+  wrapper.style.cssText = "position:fixed;bottom:12px;right:12px;z-index:9999;display:flex;gap:6px";
+
   const btn = document.createElement("button");
   btn.textContent = "Reset";
-  btn.style.cssText =
-    "position:fixed;bottom:12px;right:12px;z-index:9999;padding:6px 14px;border-radius:10px;background:#ff3b30;color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;opacity:0.7;font-family:system-ui";
+  btn.style.cssText = `${baseCss};background:#ff3b30`;
   btn.addEventListener("click", resetAll);
-  document.body.appendChild(btn);
+
+  const timerBtn = document.createElement("button");
+  timerBtn.textContent = "Reset Timer";
+  timerBtn.style.cssText = `${baseCss};background:#ff9500`;
+  timerBtn.addEventListener("click", () => {
+    localStorage.removeItem("free_spin_used");
+    if (typeof window.__resetFreeSpinTimer === "function") {
+      window.__resetFreeSpinTimer();
+    } else {
+      location.reload();
+    }
+  });
+
+  wrapper.appendChild(btn);
+  wrapper.appendChild(timerBtn);
+  document.body.appendChild(wrapper);
 }
 
 export function updateDisplays() {
